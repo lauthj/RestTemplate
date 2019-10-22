@@ -27,7 +27,7 @@ public class SpringBootDemoApplicationTests
     @LocalServerPort
     int randomServerPort;
     
- /*   @Test
+    @Test
     public void testGetEmployeeListSuccess() throws URISyntaxException 
     {
         RestTemplate restTemplate = new RestTemplate();
@@ -41,8 +41,8 @@ public class SpringBootDemoApplicationTests
         Assert.assertEquals(200, result.getStatusCodeValue());
         Assert.assertEquals(true, result.getBody().contains("employeeList"));
     }
-
-    @Test
+    
+ /*   @Test
     public void testGetEmployeeListSuccessWithHeaders() throws URISyntaxException 
     {
         RestTemplate restTemplate = new RestTemplate();
@@ -67,14 +67,14 @@ public class SpringBootDemoApplicationTests
             Assert.assertEquals(true, ex.getResponseBodyAsString().contains("Missing request header"));
         }
     }
-  */  
+ */   
    @Test
     public void testAddEmployeeSuccess() throws URISyntaxException 
     {
         RestTemplate restTemplate = new RestTemplate();
         final String baseUrl = "http://localhost:"+randomServerPort+"/employees/";
         URI uri = new URI(baseUrl);
-        Employee employee = new Employee(null, "Adam", "Gilly", "test@email.com");
+        Employee employee = new Employee(1, "Adam", "Gilly", "test@email.com");
         
         HttpHeaders headers = new HttpHeaders();
         headers.set("X-COM-PERSIST", "true");      
@@ -87,7 +87,7 @@ public class SpringBootDemoApplicationTests
         Assert.assertEquals(201, result.getStatusCodeValue());
     }
     
- /*   @Test
+    @Test
     public void testAddEmployeeMissingHeader() throws URISyntaxException 
     {
         RestTemplate restTemplate = new RestTemplate();
@@ -110,5 +110,5 @@ public class SpringBootDemoApplicationTests
             Assert.assertEquals(400, ex.getRawStatusCode());
             Assert.assertEquals(true, ex.getResponseBodyAsString().contains("Missing request header"));
         }
-    } */
+    } 
 }
